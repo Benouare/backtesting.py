@@ -3,22 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.7.5" />
+<meta name="generator" content="pdoc 0.9.2" />
 <title>backtesting.backtesting API documentation</title>
-<meta name="description" content="Core backtesting data structures.
-Objects from this module can be imported from the top-level
+<meta name="description" content="Core framework data structures.
+Objects from this module can also be imported from the top-level
 module directly, e.g …" />
-<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
-<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
-<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
-<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
 <style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
-<style>.homelink{display:block;font-size:2em;font-weight:bold;color:#555;background:#f6f6f6;text-align:center;padding:.5em 0}.homelink:hover{color:inherit}.homelink img{display:block;max-width:40%;max-height:5em;margin:auto;margin-bottom:.3em}</style>
+<link rel="preconnect" href="https://www.google.com">
+<script async src="https://cse.google.com/cse.js?cx=017837193012385208679:pey8ky8gdqw"></script>
+<style>
+.gsc-control-cse {padding:0 !important;margin-top:1em}
+body.gsc-overflow-hidden #sidebar {overflow: visible;}
+</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+<style>.homelink{display:block;font-size:2em;font-weight:bold;color:#555;text-align:center;padding:.5em 0}.homelink:hover{color:inherit}.homelink img{display:block;max-width:40%;max-height:5em;margin:auto;margin-bottom:.3em}</style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
 <link rel="canonical" href="https://kernc.github.io/backtesting.py/doc/backtesting/backtesting.html">
 <link rel="icon" href="https://kernc.github.io/backtesting.py/logo.png">
-<script data-ad-client="ca-pub-2900001379782823" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></head>
+<script async src='https://www.googletagmanager.com/gtag/js?id=G-C4YF12M4PY'></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-C4YF12M4PY');</script><script data-ad-client="ca-pub-2900001379782823" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></head>
 <body>
 <main>
 <article id="content">
@@ -26,8 +34,8 @@ module directly, e.g …" />
 <h1 class="title">Module <code>backtesting.backtesting</code></h1>
 </header>
 <section id="section-intro">
-<p>Core backtesting data structures.
-Objects from this module can be imported from the top-level
+<p>Core framework data structures.
+Objects from this module can also be imported from the top-level
 module directly, e.g.</p>
 <pre><code>from backtesting import Backtest, Strategy
 </code></pre>
@@ -43,14 +51,14 @@ module directly, e.g.</p>
 <dl>
 <dt id="backtesting.backtesting.Backtest"><code class="flex name class">
 <span>class <span class="ident">Backtest</span></span>
-<span>(</span><span>data, strategy, *, cash=10000, commission=0.0, margin=1.0, trade_on_close=False)</span>
+<span>(</span><span>data, strategy, *, cash=10000, commission=0.0, margin=1.0, trade_on_close=False, hedging=False, exclusive_orders=False, close_all_at_end=False)</span>
 </code></dt>
 <dd>
-<section class="desc"><p>Backtest a particular (parameterized) strategy
+<div class="desc"><p>Backtest a particular (parameterized) strategy
 on particular data.</p>
 <p>Upon initialization, call method
-<a title="backtesting.backtesting.Backtest.run" href="#backtesting.backtesting.Backtest.run"><code>Backtest.run()</code></a> to run a backtest
-instance, or <a title="backtesting.backtesting.Backtest.optimize" href="#backtesting.backtesting.Backtest.optimize"><code>Backtest.optimize()</code></a> to
+<code><a title="backtesting.backtesting.Backtest.run" href="#backtesting.backtesting.Backtest.run">Backtest.run()</a></code> to run a backtest
+instance, or <code><a title="backtesting.backtesting.Backtest.optimize" href="#backtesting.backtesting.Backtest.optimize">Backtest.optimize()</a></code> to
 optimize it.</p>
 <p>Initialize a backtest. Requires data and a strategy to test.</p>
 <p><code>data</code> is a <code>pd.DataFrame</code> with columns:
@@ -59,37 +67,58 @@ If any columns are missing, set them to what you have available,
 e.g.</p>
 <pre><code>df['Open'] = df['High'] = df['Low'] = df['Close']
 </code></pre>
-<p>DataFrame index can be either datetime index (timestamps)
+<p>The passed data frame can contain additional columns that
+can be used by the strategy (e.g. sentiment info).
+DataFrame index can be either a datetime index (timestamps)
 or a monotonic range index (i.e. a sequence of periods).</p>
-<p><code>strategy</code> is a <a title="backtesting.backtesting.Strategy" href="#backtesting.backtesting.Strategy"><code>Strategy</code></a>
+<p><code>strategy</code> is a <code><a title="backtesting.backtesting.Strategy" href="#backtesting.backtesting.Strategy">Strategy</a></code>
 <em>subclass</em> (not an instance).</p>
 <p><code>cash</code> is the initial cash to start with.</p>
-<p><code>commission</code> is the commision ratio. E.g. if your broker's commission
+<p><code>commission</code> is the commission ratio. E.g. if your broker's commission
 is 1% of trade value, set commission to <code>0.01</code>. Note, if you wish to
-account for bid-ask spread, you cam approximate doing so by increasing
+account for bid-ask spread, you can approximate doing so by increasing
 the commission, e.g. set it to <code>0.0002</code> for commission-less forex
 trading where the average spread is roughly 0.2‰ of asking price.</p>
 <p><code>margin</code> is the required margin (ratio) of a leveraged account.
 No difference is made between initial and maintenance margins.
 To run the backtest using e.g. 50:1 leverge that your broker allows,
 set margin to <code>0.02</code> (1 / leverage).</p>
-<p>If <code>trade_on_close</code> is <code>True</code>, market orders will be executed
+<p>If <code>trade_on_close</code> is <code>True</code>, market orders will be filled
 with respect to the current bar's closing price instead of the
-next bar's open.</p></section>
+next bar's open.</p>
+<p>If <code>hedging</code> is <code>True</code>, allow trades in both directions simultaneously.
+If <code>False</code>, the opposite-facing orders first close existing trades in
+a <a href="https://www.investopedia.com/terms/n/nfa-compliance-rule-2-43b.asp">FIFO</a> manner.</p>
+<p>If <code>exclusive_orders</code> is <code>True</code>, each new order auto-closes the previous
+trade/position, making at most a single trade (long or short) in effect
+at each time.</p></div>
 <h3>Methods</h3>
 <dl>
 <dt id="backtesting.backtesting.Backtest.optimize"><code class="name flex">
-<span>def <span class="ident">optimize</span></span>(<span>self, maximize='SQN', constraint=None, return_heatmap=False, **kwargs)</span>
+<span>def <span class="ident">optimize</span></span>(<span>self, *, maximize='SQN', method='grid', max_tries=None, constraint=None, return_heatmap=False, return_optimization=False, random_state=None, **kwargs)</span>
 </code></dt>
 <dd>
-<section class="desc"><p>Optimize strategy parameters to an optimal combination using
-parallel exhaustive search. Returns result <code>pd.Series</code> of
-the best run.</p>
+<div class="desc"><p>Optimize strategy parameters to an optimal combination.
+Returns result <code>pd.Series</code> of the best run.</p>
 <p><code>maximize</code> is a string key from the
-<a title="backtesting.backtesting.Backtest.run" href="#backtesting.backtesting.Backtest.run"><code>Backtest.run()</code></a>-returned results series,
+<code><a title="backtesting.backtesting.Backtest.run" href="#backtesting.backtesting.Backtest.run">Backtest.run()</a></code>-returned results series,
 or a function that accepts this series object and returns a number;
 the higher the better. By default, the method maximizes
 Van Tharp's <a href="https://google.com/search?q=System+Quality+Number">System Quality Number</a>.</p>
+<p><code>method</code> is the optimization method. Currently two methods are supported:</p>
+<ul>
+<li><code>"grid"</code> which does an exhaustive (or randomized) search over the
+cartesian product of parameter combinations, and</li>
+<li><code>"skopt"</code> which finds close-to-optimal strategy parameters using
+<a href="https://scikit-optimize.github.io/stable/auto_examples/bayesian-optimization.html">model-based optimization</a>, making at most <code>max_tries</code> evaluations.</li>
+</ul>
+<p><code>max_tries</code> is the maximal number of strategy runs to perform.
+If <code>method="grid"</code>, this results in randomized grid search.
+If <code>max_tries</code> is a floating value between (0, 1], this sets the
+number of runs to approximately that fraction of full grid space.
+Alternatively, if integer, it denotes the absolute maximum number
+of evaluations. If unspecified (default), grid search is exhaustive,
+whereas for <code>method="skopt"</code>, <code>max_tries</code> is set to 200.</p>
 <p><code>constraint</code> is a function that accepts a dict-like object of
 parameters (with values) and returns <code>True</code> when the combination
 is admissible to test with. By default, any parameters combination
@@ -98,7 +127,14 @@ is considered admissible.</p>
 series, an additional <code>pd.Series</code> is returned with a multiindex
 of all admissible parameter combinations, which can be further
 inspected or projected onto 2D to plot a heatmap
-(see <code>backtesting.backtesting.lib.plot_heatmaps()</code>).</p>
+(see <code><a title="backtesting.lib.plot_heatmaps" href="lib.html#backtesting.lib.plot_heatmaps">plot_heatmaps()</a></code>).</p>
+<p>If <code>return_optimization</code> is True and <code>method = 'skopt'</code>,
+in addition to result series (and maybe heatmap), return raw
+<a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.OptimizeResult.html"><code>scipy.optimize.OptimizeResult</code></a> for further
+inspection, e.g. with <a href="https://scikit-optimize.github.io">scikit-optimize</a>
+<a href="https://scikit-optimize.github.io/stable/modules/plots.html">plotting tools</a>.</p>
+<p>If you want reproducible optimization results, set <code>random_state</code>
+to a fixed integer or a <code>numpy.random.RandomState</code> object.</p>
 <p>Additional keyword arguments represent strategy arguments with
 list-like collections of possible values. For example, the following
 code finds and returns the "best" of the 7 admissible (of the
@@ -108,19 +144,18 @@ code finds and returns the "best" of the 7 admissible (of the
 </code></pre>
 <div class="admonition todo">
 <p class="admonition-title">TODO</p>
-<p>Add parameter <code>max_tries: Union[int, float] = None</code> which switches
-from exhaustive grid search to random search. See notes in the source.</p>
-</div></section>
+<p>Improve multiprocessing/parallel execution on Windos with start method 'spawn'.</p>
+</div></div>
 </dd>
 <dt id="backtesting.backtesting.Backtest.plot"><code class="name flex">
-<span>def <span class="ident">plot</span></span>(<span>self, *, results=None, filename=None, plot_width=None, plot_equity=True, plot_pl=True, plot_volume=True, plot_drawdown=False, smooth_equity=False, relative_equity=True, omit_missing=True, superimpose=True, show_legend=True, open_browser=True)</span>
+<span>def <span class="ident">plot</span></span>(<span>self, *, results=None, filename=None, plot_width=None, plot_equity=True, plot_return=False, plot_pl=True, plot_volume=True, plot_drawdown=False, smooth_equity=False, relative_equity=True, superimpose=True, resample=True, reverse_indicators=False, show_legend=True, open_browser=True)</span>
 </code></dt>
 <dd>
-<section class="desc"><p>Plot the progression of the last backtest run.</p>
+<div class="desc"><p>Plot the progression of the last backtest run.</p>
 <p>If <code>results</code> is provided, it should be a particular result
 <code>pd.Series</code> such as returned by
-<a title="backtesting.backtesting.Backtest.run" href="#backtesting.backtesting.Backtest.run"><code>Backtest.run()</code></a> or
-<a title="backtesting.backtesting.Backtest.optimize" href="#backtesting.backtesting.Backtest.optimize"><code>Backtest.optimize()</code></a>, otherwise the last
+<code><a title="backtesting.backtesting.Backtest.run" href="#backtesting.backtesting.Backtest.run">Backtest.run()</a></code> or
+<code><a title="backtesting.backtesting.Backtest.optimize" href="#backtesting.backtesting.Backtest.optimize">Backtest.optimize()</a></code>, otherwise the last
 run's results are used.</p>
 <p><code>filename</code> is the path to save the interactive HTML plot to.
 By default, a strategy/parameter-dependent file is created in the
@@ -129,7 +164,11 @@ current working directory.</p>
 the plot is made to span 100% of browser width. The height is
 currently non-adjustable.</p>
 <p>If <code>plot_equity</code> is <code>True</code>, the resulting plot will contain
-an equity (cash plus assets) graph section.</p>
+an equity (initial cash plus assets) graph section. This is the same
+as <code>plot_return</code> plus initial 100%.</p>
+<p>If <code>plot_return</code> is <code>True</code>, the resulting plot will contain
+a cumulative return graph section. This is the same
+as <code>plot_equity</code> minus initial 100%.</p>
 <p>If <code>plot_pl</code> is <code>True</code>, the resulting plot will contain
 a profit/loss (P/L) indicator section.</p>
 <p>If <code>plot_volume</code> is <code>True</code>, the resulting plot will contain
@@ -137,92 +176,142 @@ a trade volume section.</p>
 <p>If <code>plot_drawdown</code> is <code>True</code>, the resulting plot will contain
 a separate drawdown graph section.</p>
 <p>If <code>smooth_equity</code> is <code>True</code>, the equity graph will be
-interpolated between points of cash-only positions,
+interpolated between fixed points at trade closing times,
 unaffected by any interim asset volatility.</p>
 <p>If <code>relative_equity</code> is <code>True</code>, scale and label equity graph axis
 with return percent, not absolute cash-equivalent values.</p>
-<p>If <code>omit_missing</code> is <code>True</code>, skip missing candlestick bars on the
-datetime axis.</p>
-<p>If <code>superimpose</code> is <code>True</code>, superimpose downsampled candlesticks
-over the original candlestick chart. Default downsampling is:
-weekly for daily data, daily for hourly data, hourly for minute data,
-and minute for second and sub-second data.
-<code>superimpose</code> can also be a string, in which case it is a valid
-<a href="http://pandas.pydata.org/pandas-docs/stable/timeseries.html#offset-aliases">Pandas offset string</a>, such as <code>'5T'</code> or <code>'5min'</code>.
+<p>If <code>superimpose</code> is <code>True</code>, superimpose larger-timeframe candlesticks
+over the original candlestick chart. Default downsampling rule is:
+monthly for daily data, daily for hourly data, hourly for minute data,
+and minute for (sub-)second data.
+<code>superimpose</code> can also be a valid <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects">Pandas offset string</a>,
+such as <code>'5T'</code> or <code>'5min'</code>, in which case this frequency will be
+used to superimpose.
 Note, this only works for data with a datetime index.</p>
+<p>If <code>resample</code> is <code>True</code>, the OHLC data is resampled in a way that
+makes the upper number of candles for Bokeh to plot limited to 10_000.
+This may, in situations of overabundant data,
+improve plot's interactive performance and avoid browser's
+<code>Javascript Error: Maximum call stack size exceeded</code> or similar.
+Equity &amp; dropdown curves and individual trades data is,
+likewise, <a href="lib.html#backtesting.lib.TRADES_AGG">reasonably <em>aggregated</em></a>.
+<code>resample</code> can also be a <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects">Pandas offset string</a>,
+such as <code>'5T'</code> or <code>'5min'</code>, in which case this frequency will be
+used to resample, overriding above numeric limitation.
+Note, all this only works for data with a datetime index.</p>
+<p>If <code>reverse_indicators</code> is <code>True</code>, the indicators below the OHLC chart
+are plotted in reverse order of declaration.</p>
 <p>If <code>show_legend</code> is <code>True</code>, the resulting plot graphs will contain
 labeled legends.</p>
 <p>If <code>open_browser</code> is <code>True</code>, the resulting <code>filename</code> will be
-opened in the default web browser.</p></section>
+opened in the default web browser.</p></div>
 </dd>
 <dt id="backtesting.backtesting.Backtest.run"><code class="name flex">
 <span>def <span class="ident">run</span></span>(<span>self, **kwargs)</span>
 </code></dt>
 <dd>
-<section class="desc"><p>Run the backtest. Returns <code>pd.Series</code> with results and statistics.</p>
-<p>Keyword arguments are interpreted as strategy parameters.</p></section>
+<div class="desc"><p>Run the backtest. Returns <code>pd.Series</code> with results and statistics.</p>
+<p>Keyword arguments are interpreted as strategy parameters.</p>
+<pre><code>&gt;&gt;&gt; Backtest(GOOG, SmaCross).run()
+Start                     2004-08-19 00:00:00
+End                       2013-03-01 00:00:00
+Duration                   3116 days 00:00:00
+Exposure Time [%]                     93.9944
+Equity Final [$]                      51959.9
+Equity Peak [$]                       75787.4
+Return [%]                            419.599
+Buy &amp; Hold Return [%]                 703.458
+Return (Ann.) [%]                      21.328
+Volatility (Ann.) [%]                 36.5383
+Sharpe Ratio                         0.583718
+Sortino Ratio                         1.09239
+Calmar Ratio                         0.444518
+Max. Drawdown [%]                    -47.9801
+Avg. Drawdown [%]                    -5.92585
+Max. Drawdown Duration      584 days 00:00:00
+Avg. Drawdown Duration       41 days 00:00:00
+# Trades                                   65
+Win Rate [%]                          46.1538
+Best Trade [%]                         53.596
+Worst Trade [%]                      -18.3989
+Avg. Trade [%]                        2.35371
+Max. Trade Duration         183 days 00:00:00
+Avg. Trade Duration          46 days 00:00:00
+Profit Factor                         2.08802
+Expectancy [%]                        8.79171
+SQN                                  0.916893
+_strategy                            SmaCross
+_equity_curve                           Eq...
+_trades                       Size  EntryB...
+dtype: object
+</code></pre></div>
 </dd>
 </dl>
 </dd>
-<dt id="backtesting.backtesting.Orders"><code class="flex name class">
-<span>class <span class="ident">Orders</span></span>
+<dt id="backtesting.backtesting.Order"><code class="flex name class">
+<span>class <span class="ident">Order</span></span>
 </code></dt>
 <dd>
-<section class="desc"><p>Orders waiting for execution, available as
-<a title="backtesting.backtesting.Strategy.orders" href="#backtesting.backtesting.Strategy.orders"><code>Strategy.orders</code></a> within
-<a title="backtesting.backtesting.Strategy.next" href="#backtesting.backtesting.Strategy.next"><code>Strategy.next()</code></a>.</p>
-<p>Implied limit and stop-limit orders (taking profits and stopping loss)
-are always present; set the limit price with
-<a title="backtesting.backtesting.Orders.set_sl" href="#backtesting.backtesting.Orders.set_sl"><code>Orders.set_sl()</code></a> and
-<a title="backtesting.backtesting.Orders.set_tp" href="#backtesting.backtesting.Orders.set_tp"><code>Orders.set_tp()</code></a>.</p></section>
+<div class="desc"><p>Place new orders through <code><a title="backtesting.backtesting.Strategy.buy" href="#backtesting.backtesting.Strategy.buy">Strategy.buy()</a></code> and <code><a title="backtesting.backtesting.Strategy.sell" href="#backtesting.backtesting.Strategy.sell">Strategy.sell()</a></code>.
+Query existing orders through <code><a title="backtesting.backtesting.Strategy.orders" href="#backtesting.backtesting.Strategy.orders">Strategy.orders</a></code>.</p>
+<p>When an order is executed or <a href="https://www.investopedia.com/terms/f/fill.asp">filled</a>, it results in a <code><a title="backtesting.backtesting.Trade" href="#backtesting.backtesting.Trade">Trade</a></code>.</p>
+<p>If you wish to modify aspects of a placed but not yet filled order,
+cancel it and place a new one instead.</p>
+<p>All placed orders are <a href="https://www.investopedia.com/terms/g/gtc.asp">Good 'Til Canceled</a>.</p></div>
 <h3>Instance variables</h3>
 <dl>
-<dt id="backtesting.backtesting.Orders.entry"><code class="name">var <span class="ident">entry</span></code></dt>
+<dt id="backtesting.backtesting.Order.is_contingent"><code class="name">var <span class="ident">is_contingent</span></code></dt>
 <dd>
-<section class="desc"><p>Price at which to enter the position if hit.</p></section>
+<div class="desc"><p>True for <a href="https://www.investopedia.com/terms/c/contingentorder.asp">contingent</a> orders, i.e. <a href="https://www.investopedia.com/terms/o/oco.asp">OCO</a> stop-loss and take-profit bracket orders
+placed upon an active trade. Remaining contingent orders are canceled when
+their parent <code><a title="backtesting.backtesting.Trade" href="#backtesting.backtesting.Trade">Trade</a></code> is closed.</p>
+<p>You can modify contingent orders through <code><a title="backtesting.backtesting.Trade.sl" href="#backtesting.backtesting.Trade.sl">Trade.sl</a></code> and <code><a title="backtesting.backtesting.Trade.tp" href="#backtesting.backtesting.Trade.tp">Trade.tp</a></code>.</p></div>
 </dd>
-<dt id="backtesting.backtesting.Orders.is_long"><code class="name">var <span class="ident">is_long</span></code></dt>
+<dt id="backtesting.backtesting.Order.is_long"><code class="name">var <span class="ident">is_long</span></code></dt>
 <dd>
-<section class="desc"><p>True if the waiting entry order is long.</p></section>
+<div class="desc"><p>True if the order is long (order size is positive).</p></div>
 </dd>
-<dt id="backtesting.backtesting.Orders.is_short"><code class="name">var <span class="ident">is_short</span></code></dt>
+<dt id="backtesting.backtesting.Order.is_short"><code class="name">var <span class="ident">is_short</span></code></dt>
 <dd>
-<section class="desc"><p>True if the waiting entry order is short.</p></section>
+<div class="desc"><p>True if the order is short (order size is negative).</p></div>
 </dd>
-<dt id="backtesting.backtesting.Orders.sl"><code class="name">var <span class="ident">sl</span></code></dt>
+<dt id="backtesting.backtesting.Order.limit"><code class="name">var <span class="ident">limit</span></code></dt>
 <dd>
-<section class="desc"><p>Stop-loss (stop-limit) price at which to exit the position if hit.</p></section>
+<div class="desc"><p>Order limit price for <a href="https://www.investopedia.com/terms/l/limitorder.asp">limit orders</a>, or None for <a href="https://www.investopedia.com/terms/m/marketorder.asp">market orders</a>,
+which are filled at next available price.</p></div>
 </dd>
-<dt id="backtesting.backtesting.Orders.tp"><code class="name">var <span class="ident">tp</span></code></dt>
+<dt id="backtesting.backtesting.Order.size"><code class="name">var <span class="ident">size</span></code></dt>
 <dd>
-<section class="desc"><p>Take-profit (limit) price at which to exit the position if hit.</p></section>
+<div class="desc"><p>Order size (negative for short orders).</p>
+<p>If size is a value between 0 and 1, it is interpreted as a fraction of current
+available liquidity (cash plus <code><a title="backtesting.backtesting.Position.pl" href="#backtesting.backtesting.Position.pl">Position.pl</a></code> minus used margin).
+A value greater than or equal to 1 indicates an absolute number of units.</p></div>
+</dd>
+<dt id="backtesting.backtesting.Order.sl"><code class="name">var <span class="ident">sl</span></code></dt>
+<dd>
+<div class="desc"><p>A stop-loss price at which, if set, a new contingent stop-market order
+will be placed upon the <code><a title="backtesting.backtesting.Trade" href="#backtesting.backtesting.Trade">Trade</a></code> following this order's execution.
+See also <code><a title="backtesting.backtesting.Trade.sl" href="#backtesting.backtesting.Trade.sl">Trade.sl</a></code>.</p></div>
+</dd>
+<dt id="backtesting.backtesting.Order.stop"><code class="name">var <span class="ident">stop</span></code></dt>
+<dd>
+<div class="desc"><p>Order stop price for <a href="https://www.investopedia.com/terms/s/stoporder.asp">stop-limit/stop-market</a> order,
+otherwise None if no stop was set, or the stop price has already been hit.</p></div>
+</dd>
+<dt id="backtesting.backtesting.Order.tp"><code class="name">var <span class="ident">tp</span></code></dt>
+<dd>
+<div class="desc"><p>A take-profit price at which, if set, a new contingent limit order
+will be placed upon the <code><a title="backtesting.backtesting.Trade" href="#backtesting.backtesting.Trade">Trade</a></code> following this order's execution.
+See also <code><a title="backtesting.backtesting.Trade.tp" href="#backtesting.backtesting.Trade.tp">Trade.tp</a></code>.</p></div>
 </dd>
 </dl>
 <h3>Methods</h3>
 <dl>
-<dt id="backtesting.backtesting.Orders.cancel"><code class="name flex">
+<dt id="backtesting.backtesting.Order.cancel"><code class="name flex">
 <span>def <span class="ident">cancel</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<section class="desc"><p>Cancel all implied orders.</p></section>
-</dd>
-<dt id="backtesting.backtesting.Orders.set_entry"><code class="name flex">
-<span>def <span class="ident">set_entry</span></span>(<span>self, price)</span>
-</code></dt>
-<dd>
-<section class="desc"><p>Set new entry price of the implied limit order).</p></section>
-</dd>
-<dt id="backtesting.backtesting.Orders.set_sl"><code class="name flex">
-<span>def <span class="ident">set_sl</span></span>(<span>self, price)</span>
-</code></dt>
-<dd>
-<section class="desc"><p>Set new stop-loss price (of the implied stop-limit order).</p></section>
-</dd>
-<dt id="backtesting.backtesting.Orders.set_tp"><code class="name flex">
-<span>def <span class="ident">set_tp</span></span>(<span>self, price)</span>
-</code></dt>
-<dd>
-<section class="desc"><p>Set new take-profit price (of the implied limit order).</p></section>
+<div class="desc"><p>Cancel the order.</p></div>
 </dd>
 </dl>
 </dd>
@@ -230,52 +319,43 @@ are always present; set the limit price with
 <span>class <span class="ident">Position</span></span>
 </code></dt>
 <dd>
-<section class="desc"><p>Currently held asset position, available as
-<a title="backtesting.backtesting.Strategy.position" href="#backtesting.backtesting.Strategy.position"><code>Strategy.position</code></a> within
-<a title="backtesting.backtesting.Strategy.next" href="#backtesting.backtesting.Strategy.next"><code>Strategy.next()</code></a>.
+<div class="desc"><p>Currently held asset position, available as
+<code><a title="backtesting.backtesting.Strategy.position" href="#backtesting.backtesting.Strategy.position">Strategy.position</a></code> within
+<code><a title="backtesting.backtesting.Strategy.next" href="#backtesting.backtesting.Strategy.next">Strategy.next()</a></code>.
 Can be used in boolean contexts, e.g.</p>
 <pre><code>if self.position:
     ...  # we have a position, either long or short
-</code></pre></section>
+</code></pre></div>
 <h3>Instance variables</h3>
 <dl>
 <dt id="backtesting.backtesting.Position.is_long"><code class="name">var <span class="ident">is_long</span></code></dt>
 <dd>
-<section class="desc"><p>True if the position is long (position size is positive).</p></section>
+<div class="desc"><p>True if the position is long (position size is positive).</p></div>
 </dd>
 <dt id="backtesting.backtesting.Position.is_short"><code class="name">var <span class="ident">is_short</span></code></dt>
 <dd>
-<section class="desc"><p>True if the position is short (position size is negative).</p></section>
-</dd>
-<dt id="backtesting.backtesting.Position.open_price"><code class="name">var <span class="ident">open_price</span></code></dt>
-<dd>
-<section class="desc"><p>Price at which the position was opened.</p></section>
-</dd>
-<dt id="backtesting.backtesting.Position.open_time"><code class="name">var <span class="ident">open_time</span></code></dt>
-<dd>
-<section class="desc"><p>Data index value at which the position was opened.</p></section>
+<div class="desc"><p>True if the position is short (position size is negative).</p></div>
 </dd>
 <dt id="backtesting.backtesting.Position.pl"><code class="name">var <span class="ident">pl</span></code></dt>
 <dd>
-<section class="desc"><p>Profit (positive) or loss (negative) of current position.</p></section>
+<div class="desc"><p>Profit (positive) or loss (negative) of the current position in cash units.</p></div>
 </dd>
 <dt id="backtesting.backtesting.Position.pl_pct"><code class="name">var <span class="ident">pl_pct</span></code></dt>
 <dd>
-<section class="desc"><p>Profit (positive) or loss (negative) of current position,
-in percent of position open price.</p></section>
+<div class="desc"><p>Profit (positive) or loss (negative) of the current position in percent.</p></div>
 </dd>
 <dt id="backtesting.backtesting.Position.size"><code class="name">var <span class="ident">size</span></code></dt>
 <dd>
-<section class="desc"><p>Position size in units of asset. Negative if position is short.</p></section>
+<div class="desc"><p>Position size in units of asset. Negative if position is short.</p></div>
 </dd>
 </dl>
 <h3>Methods</h3>
 <dl>
 <dt id="backtesting.backtesting.Position.close"><code class="name flex">
-<span>def <span class="ident">close</span></span>(<span>self)</span>
+<span>def <span class="ident">close</span></span>(<span>self, portion=1.0)</span>
 </code></dt>
 <dd>
-<section class="desc"><p>Close the position at current market price.</p></section>
+<div class="desc"><p>Close portion of position by closing <code>portion</code> of each active trade. See <code><a title="backtesting.backtesting.Trade.close" href="#backtesting.backtesting.Trade.close">Trade.close()</a></code>.</p></div>
 </dd>
 </dl>
 </dd>
@@ -283,11 +363,11 @@ in percent of position open price.</p></section>
 <span>class <span class="ident">Strategy</span></span>
 </code></dt>
 <dd>
-<section class="desc"><p>A trading strategy base class. Extend this class and
+<div class="desc"><p>A trading strategy base class. Extend this class and
 override methods
-<a title="backtesting.backtesting.Strategy.init" href="#backtesting.backtesting.Strategy.init"><code>Strategy.init()</code></a> and
-<a title="backtesting.backtesting.Strategy.next" href="#backtesting.backtesting.Strategy.next"><code>Strategy.next()</code></a> to define
-your own strategy.</p></section>
+<code><a title="backtesting.backtesting.Strategy.init" href="#backtesting.backtesting.Strategy.init">Strategy.init()</a></code> and
+<code><a title="backtesting.backtesting.Strategy.next" href="#backtesting.backtesting.Strategy.next">Strategy.next()</a></code> to define
+your own strategy.</p></div>
 <h3>Subclasses</h3>
 <ul class="hlist">
 <li><a title="backtesting.lib.SignalStrategy" href="lib.html#backtesting.lib.SignalStrategy">SignalStrategy</a></li>
@@ -295,43 +375,52 @@ your own strategy.</p></section>
 </ul>
 <h3>Instance variables</h3>
 <dl>
+<dt id="backtesting.backtesting.Strategy.closed_trades"><code class="name">var <span class="ident">closed_trades</span></code></dt>
+<dd>
+<div class="desc"><p>List of settled trades (see <code><a title="backtesting.backtesting.Trade" href="#backtesting.backtesting.Trade">Trade</a></code>).</p></div>
+</dd>
 <dt id="backtesting.backtesting.Strategy.data"><code class="name">var <span class="ident">data</span></code></dt>
 <dd>
-<section class="desc"><p>Price data, roughly as passed into
-<a title="backtesting.backtesting.Backtest" href="#backtesting.backtesting.Backtest"><code>Backtest</code></a>,
+<div class="desc"><p>Price data, roughly as passed into
+<code><a title="backtesting.backtesting.Backtest" href="#backtesting.backtesting.Backtest">Backtest</a></code>,
 but with two significant exceptions:</p>
 <ul>
 <li><code>data</code> is <em>not</em> a DataFrame, but a custom structure
 that serves customized numpy arrays for reasons of performance
 and convenience. Besides OHLCV columns, <code>.index</code> and length,
 it offers <code>.pip</code> property, the smallest price unit of change.</li>
-<li>Within <a title="backtesting.backtesting.Strategy.init" href="#backtesting.backtesting.Strategy.init"><code>Strategy.init()</code></a>, <code>data</code> arrays
+<li>Within <code><a title="backtesting.backtesting.Strategy.init" href="#backtesting.backtesting.Strategy.init">Strategy.init()</a></code>, <code>data</code> arrays
 are available in full length, as passed into
-<a title="backtesting.backtesting.Backtest" href="#backtesting.backtesting.Backtest"><code>Backtest</code></a>
+<code><a title="backtesting.backtesting.Backtest" href="#backtesting.backtesting.Backtest">Backtest</a></code>
 (for precomputing indicators and such). However, within
-<a title="backtesting.backtesting.Strategy.next" href="#backtesting.backtesting.Strategy.next"><code>Strategy.next()</code></a>, <code>data</code> arrays are
+<code><a title="backtesting.backtesting.Strategy.next" href="#backtesting.backtesting.Strategy.next">Strategy.next()</a></code>, <code>data</code> arrays are
 only as long as the current iteration, simulating gradual
 price point revelation. In each call of
-<a title="backtesting.backtesting.Strategy.next" href="#backtesting.backtesting.Strategy.next"><code>Strategy.next()</code></a> (iteratively called by
-<a title="backtesting.backtesting.Backtest" href="#backtesting.backtesting.Backtest"><code>Backtest</code></a> internally),
+<code><a title="backtesting.backtesting.Strategy.next" href="#backtesting.backtesting.Strategy.next">Strategy.next()</a></code> (iteratively called by
+<code><a title="backtesting.backtesting.Backtest" href="#backtesting.backtesting.Backtest">Backtest</a></code> internally),
 the last array value (e.g. <code>data.Close[-1]</code>)
 is always the <em>most recent</em> value.</li>
 <li>If you need data arrays (e.g. <code>data.Close</code>) to be indexed
-Pandas series, you can call their <code>.to_series()</code> method
-(e.g. <code>data.Close.to_series()</code>).</li>
-</ul></section>
+<strong>Pandas series</strong>, you can call their <code>.s</code> accessor
+(e.g. <code>data.Close.s</code>). If you need the whole of data
+as a <strong>DataFrame</strong>, use <code>.df</code> accessor (i.e. <code>data.df</code>).</li>
+</ul></div>
 </dd>
 <dt id="backtesting.backtesting.Strategy.equity"><code class="name">var <span class="ident">equity</span></code></dt>
 <dd>
-<section class="desc"><p>Current account equity (cash plus assets).</p></section>
+<div class="desc"><p>Current account equity (cash plus assets).</p></div>
 </dd>
 <dt id="backtesting.backtesting.Strategy.orders"><code class="name">var <span class="ident">orders</span></code></dt>
 <dd>
-<section class="desc"><p>Instance of <a title="backtesting.backtesting.Orders" href="#backtesting.backtesting.Orders"><code>Orders</code></a>.</p></section>
+<div class="desc"><p>List of orders (see <code><a title="backtesting.backtesting.Order" href="#backtesting.backtesting.Order">Order</a></code>) waiting for execution.</p></div>
 </dd>
 <dt id="backtesting.backtesting.Strategy.position"><code class="name">var <span class="ident">position</span></code></dt>
 <dd>
-<section class="desc"><p>Instance of <a title="backtesting.backtesting.Position" href="#backtesting.backtesting.Position"><code>Position</code></a>.</p></section>
+<div class="desc"><p>Instance of <code><a title="backtesting.backtesting.Position" href="#backtesting.backtesting.Position">Position</a></code>.</p></div>
+</dd>
+<dt id="backtesting.backtesting.Strategy.trades"><code class="name">var <span class="ident">trades</span></code></dt>
+<dd>
+<div class="desc"><p>List of active trades (see <code><a title="backtesting.backtesting.Trade" href="#backtesting.backtesting.Trade">Trade</a></code>).</p></div>
 </dd>
 </dl>
 <h3>Methods</h3>
@@ -340,17 +429,17 @@ Pandas series, you can call their <code>.to_series()</code> method
 <span>def <span class="ident">I</span></span>(<span>self, func, *args, name=None, plot=True, overlay=None, color=None, scatter=False, **kwargs)</span>
 </code></dt>
 <dd>
-<section class="desc"><p>Declare indicator. An indicator is just an array of values,
+<div class="desc"><p>Declare indicator. An indicator is just an array of values,
 but one that is revealed gradually in
-<a title="backtesting.backtesting.Strategy.next" href="#backtesting.backtesting.Strategy.next"><code>Strategy.next()</code></a> much like
-<a title="backtesting.backtesting.Strategy.data" href="#backtesting.backtesting.Strategy.data"><code>Strategy.data</code></a> is.
+<code><a title="backtesting.backtesting.Strategy.next" href="#backtesting.backtesting.Strategy.next">Strategy.next()</a></code> much like
+<code><a title="backtesting.backtesting.Strategy.data" href="#backtesting.backtesting.Strategy.data">Strategy.data</a></code> is.
 Returns <code>np.ndarray</code> of indicator values.</p>
 <p><code>func</code> is a function that returns the indicator array(s) of
-same length as <a title="backtesting.backtesting.Strategy.data" href="#backtesting.backtesting.Strategy.data"><code>Strategy.data</code></a>.</p>
+same length as <code><a title="backtesting.backtesting.Strategy.data" href="#backtesting.backtesting.Strategy.data">Strategy.data</a></code>.</p>
 <p>In the plot legend, the indicator is labeled with
 function name, unless <code>name</code> overrides it.</p>
 <p>If <code>plot</code> is <code>True</code>, the indicator is plotted on the resulting
-<a title="backtesting.backtesting.Backtest.plot" href="#backtesting.backtesting.Backtest.plot"><code>Backtest.plot()</code></a>.</p>
+<code><a title="backtesting.backtesting.Backtest.plot" href="#backtesting.backtesting.Backtest.plot">Backtest.plot()</a></code>.</p>
 <p>If <code>overlay</code> is <code>True</code>, the indicator is plotted overlaying the
 price candlestick chart (suitable e.g. for moving averages).
 If <code>False</code>, the indicator is plotted standalone below the
@@ -365,60 +454,132 @@ be used for parameters.</p>
 <p>For example, using simple moving average function from TA-Lib:</p>
 <pre><code>def init():
     self.sma = self.I(ta.SMA, self.data.Close, self.n_sma)
-</code></pre></section>
+</code></pre></div>
 </dd>
 <dt id="backtesting.backtesting.Strategy.buy"><code class="name flex">
-<span>def <span class="ident">buy</span></span>(<span>self, price=None, *, sl=None, tp=None)</span>
+<span>def <span class="ident">buy</span></span>(<span>self, *, size=.9999, limit=None, stop=None, sl=None, tp=None)</span>
 </code></dt>
 <dd>
-<section class="desc"><p>Let the strategy close any current position and
-use <em>all available funds</em> to
-buy the asset for <code>price</code>,
-optionally entering two other orders:
-one at stop-loss price (<code>sl</code>; stop-limit order) and
-one at take-profit price (<code>tp</code>; limit order).</p>
-<p>If <code>price</code> is not set, market price is assumed.</p></section>
+<div class="desc"><p>Place a new long order. For explanation of parameters, see <code><a title="backtesting.backtesting.Order" href="#backtesting.backtesting.Order">Order</a></code> and its properties.</p>
+<p>See also <code><a title="backtesting.backtesting.Strategy.sell" href="#backtesting.backtesting.Strategy.sell">Strategy.sell()</a></code>.</p></div>
 </dd>
 <dt id="backtesting.backtesting.Strategy.init"><code class="name flex">
 <span>def <span class="ident">init</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<section class="desc"><p>Initialize the strategy.
+<div class="desc"><p>Initialize the strategy.
 Override this method.
-Declare indicators (with <a title="backtesting.backtesting.Strategy.I" href="#backtesting.backtesting.Strategy.I"><code>Strategy.I()</code></a>).
+Declare indicators (with <code><a title="backtesting.backtesting.Strategy.I" href="#backtesting.backtesting.Strategy.I">Strategy.I()</a></code>).
 Precompute what needs to be precomputed or can be precomputed
 in a vectorized fashion before the strategy starts.</p>
-<p>If you extend composable strategies from <a title="backtesting.lib" href="lib.html"><code>backtesting.lib</code></a>,
+<p>If you extend composable strategies from <code><a title="backtesting.lib" href="lib.html">backtesting.lib</a></code>,
 make sure to call:</p>
 <pre><code>super().init()
-</code></pre></section>
+</code></pre></div>
 </dd>
 <dt id="backtesting.backtesting.Strategy.next"><code class="name flex">
 <span>def <span class="ident">next</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<section class="desc"><p>Main strategy runtime method, called as each new
-<a title="backtesting.backtesting.Strategy.data" href="#backtesting.backtesting.Strategy.data"><code>Strategy.data</code></a>
+<div class="desc"><p>Main strategy runtime method, called as each new
+<code><a title="backtesting.backtesting.Strategy.data" href="#backtesting.backtesting.Strategy.data">Strategy.data</a></code>
 instance (row; full candlestick bar) becomes available.
 This is the main method where strategy decisions
-upon data precomputed in <a title="backtesting.backtesting.Strategy.init" href="#backtesting.backtesting.Strategy.init"><code>Strategy.init()</code></a>
+upon data precomputed in <code><a title="backtesting.backtesting.Strategy.init" href="#backtesting.backtesting.Strategy.init">Strategy.init()</a></code>
 take place.</p>
-<p>If you extend composable strategies from <a title="backtesting.lib" href="lib.html"><code>backtesting.lib</code></a>,
+<p>If you extend composable strategies from <code><a title="backtesting.lib" href="lib.html">backtesting.lib</a></code>,
 make sure to call:</p>
 <pre><code>super().next()
-</code></pre></section>
+</code></pre></div>
 </dd>
 <dt id="backtesting.backtesting.Strategy.sell"><code class="name flex">
-<span>def <span class="ident">sell</span></span>(<span>self, price=None, *, sl=None, tp=None)</span>
+<span>def <span class="ident">sell</span></span>(<span>self, *, size=.9999, limit=None, stop=None, sl=None, tp=None)</span>
 </code></dt>
 <dd>
-<section class="desc"><p>Let the strategy close any current position and
-use <em>all available funds</em> to
-short sell the asset for <code>price</code>,
-optionally entering two other orders:
-one at stop-loss price (<code>sl</code>; stop-limit order) and
-one at take-profit price (<code>tp</code>; limit order).</p>
-<p>If <code>price</code> is not set, market price is assumed.</p></section>
+<div class="desc"><p>Place a new short order. For explanation of parameters, see <code><a title="backtesting.backtesting.Order" href="#backtesting.backtesting.Order">Order</a></code> and its properties.</p>
+<p>See also <code><a title="backtesting.backtesting.Strategy.buy" href="#backtesting.backtesting.Strategy.buy">Strategy.buy()</a></code>.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="backtesting.backtesting.Trade"><code class="flex name class">
+<span>class <span class="ident">Trade</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>When an <code><a title="backtesting.backtesting.Order" href="#backtesting.backtesting.Order">Order</a></code> is filled, it results in an active <code><a title="backtesting.backtesting.Trade" href="#backtesting.backtesting.Trade">Trade</a></code>.
+Find active trades in <code><a title="backtesting.backtesting.Strategy.trades" href="#backtesting.backtesting.Strategy.trades">Strategy.trades</a></code> and closed, settled trades in <code><a title="backtesting.backtesting.Strategy.closed_trades" href="#backtesting.backtesting.Strategy.closed_trades">Strategy.closed_trades</a></code>.</p></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="backtesting.backtesting.Trade.entry_bar"><code class="name">var <span class="ident">entry_bar</span></code></dt>
+<dd>
+<div class="desc"><p>Candlestick bar index of when the trade was entered.</p></div>
+</dd>
+<dt id="backtesting.backtesting.Trade.entry_price"><code class="name">var <span class="ident">entry_price</span></code></dt>
+<dd>
+<div class="desc"><p>Trade entry price.</p></div>
+</dd>
+<dt id="backtesting.backtesting.Trade.entry_time"><code class="name">var <span class="ident">entry_time</span></code></dt>
+<dd>
+<div class="desc"><p>Datetime of when the trade was entered.</p></div>
+</dd>
+<dt id="backtesting.backtesting.Trade.exit_bar"><code class="name">var <span class="ident">exit_bar</span></code></dt>
+<dd>
+<div class="desc"><p>Candlestick bar index of when the trade was exited
+(or None if the trade is still active).</p></div>
+</dd>
+<dt id="backtesting.backtesting.Trade.exit_price"><code class="name">var <span class="ident">exit_price</span></code></dt>
+<dd>
+<div class="desc"><p>Trade exit price (or None if the trade is still active).</p></div>
+</dd>
+<dt id="backtesting.backtesting.Trade.exit_time"><code class="name">var <span class="ident">exit_time</span></code></dt>
+<dd>
+<div class="desc"><p>Datetime of when the trade was exited.</p></div>
+</dd>
+<dt id="backtesting.backtesting.Trade.is_long"><code class="name">var <span class="ident">is_long</span></code></dt>
+<dd>
+<div class="desc"><p>True if the trade is long (trade size is positive).</p></div>
+</dd>
+<dt id="backtesting.backtesting.Trade.is_short"><code class="name">var <span class="ident">is_short</span></code></dt>
+<dd>
+<div class="desc"><p>True if the trade is short (trade size is negative).</p></div>
+</dd>
+<dt id="backtesting.backtesting.Trade.pl"><code class="name">var <span class="ident">pl</span></code></dt>
+<dd>
+<div class="desc"><p>Trade profit (positive) or loss (negative) in cash units.</p></div>
+</dd>
+<dt id="backtesting.backtesting.Trade.pl_pct"><code class="name">var <span class="ident">pl_pct</span></code></dt>
+<dd>
+<div class="desc"><p>Trade profit (positive) or loss (negative) in percent.</p></div>
+</dd>
+<dt id="backtesting.backtesting.Trade.size"><code class="name">var <span class="ident">size</span></code></dt>
+<dd>
+<div class="desc"><p>Trade size (volume; negative for short trades).</p></div>
+</dd>
+<dt id="backtesting.backtesting.Trade.sl"><code class="name">var <span class="ident">sl</span></code></dt>
+<dd>
+<div class="desc"><p>Stop-loss price at which to close the trade.</p>
+<p>This variable is writable. By assigning it a new price value,
+you create or modify the existing SL order.
+By assigning it <code>None</code>, you cancel it.</p></div>
+</dd>
+<dt id="backtesting.backtesting.Trade.tp"><code class="name">var <span class="ident">tp</span></code></dt>
+<dd>
+<div class="desc"><p>Take-profit price at which to close the trade.</p>
+<p>This property is writable. By assigning it a new price value,
+you create or modify the existing TP order.
+By assigning it <code>None</code>, you cancel it.</p></div>
+</dd>
+<dt id="backtesting.backtesting.Trade.value"><code class="name">var <span class="ident">value</span></code></dt>
+<dd>
+<div class="desc"><p>Trade total value in cash (volume × price).</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="backtesting.backtesting.Trade.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self, portion=1.0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Place new <code><a title="backtesting.backtesting.Order" href="#backtesting.backtesting.Order">Order</a></code> to close <code>portion</code> of the trade at next market price.</p></div>
 </dd>
 </dl>
 </dd>
@@ -431,6 +592,10 @@ one at take-profit price (<code>tp</code>; limit order).</p>
 <img src="https://kernc.github.io/backtesting.py/logo.png" alt=""> Backtesting.py
 </a>
 </header>
+<div class="gcse-search" style="height: 70px"
+data-as_oq="inurl:kernc.github.io/backtesting.py inurl:github.com/kernc/backtesting.py"
+data-gaCategoryParameter="backtesting.backtesting">
+</div>
 <h1>Index</h1>
 <div class="toc">
 <ul></ul>
@@ -452,17 +617,17 @@ one at take-profit price (<code>tp</code>; limit order).</p>
 </ul>
 </li>
 <li>
-<h4><code><a title="backtesting.backtesting.Orders" href="#backtesting.backtesting.Orders">Orders</a></code></h4>
+<h4><code><a title="backtesting.backtesting.Order" href="#backtesting.backtesting.Order">Order</a></code></h4>
 <ul class="two-column">
-<li><code><a title="backtesting.backtesting.Orders.cancel" href="#backtesting.backtesting.Orders.cancel">cancel</a></code></li>
-<li><code><a title="backtesting.backtesting.Orders.entry" href="#backtesting.backtesting.Orders.entry">entry</a></code></li>
-<li><code><a title="backtesting.backtesting.Orders.is_long" href="#backtesting.backtesting.Orders.is_long">is_long</a></code></li>
-<li><code><a title="backtesting.backtesting.Orders.is_short" href="#backtesting.backtesting.Orders.is_short">is_short</a></code></li>
-<li><code><a title="backtesting.backtesting.Orders.set_entry" href="#backtesting.backtesting.Orders.set_entry">set_entry</a></code></li>
-<li><code><a title="backtesting.backtesting.Orders.set_sl" href="#backtesting.backtesting.Orders.set_sl">set_sl</a></code></li>
-<li><code><a title="backtesting.backtesting.Orders.set_tp" href="#backtesting.backtesting.Orders.set_tp">set_tp</a></code></li>
-<li><code><a title="backtesting.backtesting.Orders.sl" href="#backtesting.backtesting.Orders.sl">sl</a></code></li>
-<li><code><a title="backtesting.backtesting.Orders.tp" href="#backtesting.backtesting.Orders.tp">tp</a></code></li>
+<li><code><a title="backtesting.backtesting.Order.cancel" href="#backtesting.backtesting.Order.cancel">cancel</a></code></li>
+<li><code><a title="backtesting.backtesting.Order.is_contingent" href="#backtesting.backtesting.Order.is_contingent">is_contingent</a></code></li>
+<li><code><a title="backtesting.backtesting.Order.is_long" href="#backtesting.backtesting.Order.is_long">is_long</a></code></li>
+<li><code><a title="backtesting.backtesting.Order.is_short" href="#backtesting.backtesting.Order.is_short">is_short</a></code></li>
+<li><code><a title="backtesting.backtesting.Order.limit" href="#backtesting.backtesting.Order.limit">limit</a></code></li>
+<li><code><a title="backtesting.backtesting.Order.size" href="#backtesting.backtesting.Order.size">size</a></code></li>
+<li><code><a title="backtesting.backtesting.Order.sl" href="#backtesting.backtesting.Order.sl">sl</a></code></li>
+<li><code><a title="backtesting.backtesting.Order.stop" href="#backtesting.backtesting.Order.stop">stop</a></code></li>
+<li><code><a title="backtesting.backtesting.Order.tp" href="#backtesting.backtesting.Order.tp">tp</a></code></li>
 </ul>
 </li>
 <li>
@@ -471,8 +636,6 @@ one at take-profit price (<code>tp</code>; limit order).</p>
 <li><code><a title="backtesting.backtesting.Position.close" href="#backtesting.backtesting.Position.close">close</a></code></li>
 <li><code><a title="backtesting.backtesting.Position.is_long" href="#backtesting.backtesting.Position.is_long">is_long</a></code></li>
 <li><code><a title="backtesting.backtesting.Position.is_short" href="#backtesting.backtesting.Position.is_short">is_short</a></code></li>
-<li><code><a title="backtesting.backtesting.Position.open_price" href="#backtesting.backtesting.Position.open_price">open_price</a></code></li>
-<li><code><a title="backtesting.backtesting.Position.open_time" href="#backtesting.backtesting.Position.open_time">open_time</a></code></li>
 <li><code><a title="backtesting.backtesting.Position.pl" href="#backtesting.backtesting.Position.pl">pl</a></code></li>
 <li><code><a title="backtesting.backtesting.Position.pl_pct" href="#backtesting.backtesting.Position.pl_pct">pl_pct</a></code></li>
 <li><code><a title="backtesting.backtesting.Position.size" href="#backtesting.backtesting.Position.size">size</a></code></li>
@@ -483,6 +646,7 @@ one at take-profit price (<code>tp</code>; limit order).</p>
 <ul class="two-column">
 <li><code><a title="backtesting.backtesting.Strategy.I" href="#backtesting.backtesting.Strategy.I">I</a></code></li>
 <li><code><a title="backtesting.backtesting.Strategy.buy" href="#backtesting.backtesting.Strategy.buy">buy</a></code></li>
+<li><code><a title="backtesting.backtesting.Strategy.closed_trades" href="#backtesting.backtesting.Strategy.closed_trades">closed_trades</a></code></li>
 <li><code><a title="backtesting.backtesting.Strategy.data" href="#backtesting.backtesting.Strategy.data">data</a></code></li>
 <li><code><a title="backtesting.backtesting.Strategy.equity" href="#backtesting.backtesting.Strategy.equity">equity</a></code></li>
 <li><code><a title="backtesting.backtesting.Strategy.init" href="#backtesting.backtesting.Strategy.init">init</a></code></li>
@@ -490,6 +654,27 @@ one at take-profit price (<code>tp</code>; limit order).</p>
 <li><code><a title="backtesting.backtesting.Strategy.orders" href="#backtesting.backtesting.Strategy.orders">orders</a></code></li>
 <li><code><a title="backtesting.backtesting.Strategy.position" href="#backtesting.backtesting.Strategy.position">position</a></code></li>
 <li><code><a title="backtesting.backtesting.Strategy.sell" href="#backtesting.backtesting.Strategy.sell">sell</a></code></li>
+<li><code><a title="backtesting.backtesting.Strategy.trades" href="#backtesting.backtesting.Strategy.trades">trades</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="backtesting.backtesting.Trade" href="#backtesting.backtesting.Trade">Trade</a></code></h4>
+<ul class="two-column">
+<li><code><a title="backtesting.backtesting.Trade.close" href="#backtesting.backtesting.Trade.close">close</a></code></li>
+<li><code><a title="backtesting.backtesting.Trade.entry_bar" href="#backtesting.backtesting.Trade.entry_bar">entry_bar</a></code></li>
+<li><code><a title="backtesting.backtesting.Trade.entry_price" href="#backtesting.backtesting.Trade.entry_price">entry_price</a></code></li>
+<li><code><a title="backtesting.backtesting.Trade.entry_time" href="#backtesting.backtesting.Trade.entry_time">entry_time</a></code></li>
+<li><code><a title="backtesting.backtesting.Trade.exit_bar" href="#backtesting.backtesting.Trade.exit_bar">exit_bar</a></code></li>
+<li><code><a title="backtesting.backtesting.Trade.exit_price" href="#backtesting.backtesting.Trade.exit_price">exit_price</a></code></li>
+<li><code><a title="backtesting.backtesting.Trade.exit_time" href="#backtesting.backtesting.Trade.exit_time">exit_time</a></code></li>
+<li><code><a title="backtesting.backtesting.Trade.is_long" href="#backtesting.backtesting.Trade.is_long">is_long</a></code></li>
+<li><code><a title="backtesting.backtesting.Trade.is_short" href="#backtesting.backtesting.Trade.is_short">is_short</a></code></li>
+<li><code><a title="backtesting.backtesting.Trade.pl" href="#backtesting.backtesting.Trade.pl">pl</a></code></li>
+<li><code><a title="backtesting.backtesting.Trade.pl_pct" href="#backtesting.backtesting.Trade.pl_pct">pl_pct</a></code></li>
+<li><code><a title="backtesting.backtesting.Trade.size" href="#backtesting.backtesting.Trade.size">size</a></code></li>
+<li><code><a title="backtesting.backtesting.Trade.sl" href="#backtesting.backtesting.Trade.sl">sl</a></code></li>
+<li><code><a title="backtesting.backtesting.Trade.tp" href="#backtesting.backtesting.Trade.tp">tp</a></code></li>
+<li><code><a title="backtesting.backtesting.Trade.value" href="#backtesting.backtesting.Trade.value">value</a></code></li>
 </ul>
 </li>
 </ul>
@@ -499,14 +684,12 @@ one at take-profit price (<code>tp</code>; limit order).</p>
 </main>
 <footer id="footer">
 <p>
-<a href="https://kernc.github.io/backtesting.py/"><cite>backtesting</cite> 0.1.7</a>
+<a href="https://kernc.github.io/backtesting.py/"><cite>backtesting</cite> 0.3.1.1</a>
 <span style="color:#ddd">&#21328;</span>
 </p>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 <script>hljs.configure({languages: ['python']}); hljs.initHighlightingOnLoad()</script>
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.5</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
 </footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad()</script>
 <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-43663477-4','auto');ga('require','cleanUrlTracker',{indexFilename:'index.html',trailingSlash:'add'});ga('require','outboundLinkTracker',{events:['click','auxclick','contextmenu']});ga('require', 'maxScrollTracker');ga('require', 'pageVisibilityTracker');ga('send', 'pageview');setTimeout(function(){ga('send','event','pageview','view')},15000);</script><script async src='https://www.google-analytics.com/analytics.js'></script><script async src='https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js'></script></body>
 </html>
