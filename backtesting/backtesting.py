@@ -984,7 +984,8 @@ class Backtest:
                  margin: float = 1.,
                  trade_on_close=False,
                  hedging=False,
-                 exclusive_orders=False
+                 exclusive_orders=False,
+                 close_all_at_end=True
                  ):
         """
         Initialize a backtest. Requires data and a strategy to test.
@@ -1078,7 +1079,7 @@ class Backtest:
             warnings.warn('Data index is not datetime. Assuming simple periods, '
                           'but `pd.DateTimeIndex` is advised.',
                           stacklevel=2)
-
+        self._close_all_at_end = close_all_at_end
         self._data: pd.DataFrame = data
         self._broker = partial(
             _Broker, cash=cash, commission=commission, margin=margin,
@@ -1164,14 +1165,15 @@ class Backtest:
                 # Next tick, a moment before bar close
                 strategy.next()
             else:
-                # Close any remaining open trades so they produce some stats
-                for trade in broker.trades:
-                    trade.close()
+                if self._close_all_at_end is True:
+                    # Close any remaining open trades so they produce some stats
+                    for trade in broker.trades:
+                        trade.close()
 
-                # Re-run broker one last time to handle orders placed in the last strategy
-                # iteration. Use the same OHLC values as in the last broker iteration.
-                if start < len(self._data):
-                    try_(broker.next, exception=_OutOfMoneyError)
+                    # Re-run broker one last time to handle orders placed in the last strategy
+                    # iteration. Use the same OHLC values as in the last broker iteration.
+                    if start < len(self._data):
+                        try_(broker.next, exception=_OutOfMoneyError)
 
             # Set data back to full length
             # for future `indicator._opts['data'].index` calls to work

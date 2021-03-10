@@ -398,6 +398,19 @@ class TestBacktest(TestCase):
 
         self.assertFalse(Backtest(SHORT_DATA, S).run()._trades.empty)
 
+    def test_dont_close_orders_from_last_strategy_iteration(self):
+        class S(Strategy):
+            def init(self): pass
+
+            def next(self):
+                if not self.position:
+                    self.buy()
+                elif len(self.data) == len(SHORT_DATA):
+                    self.position.close()
+
+        self.assertTrue(
+            Backtest(SHORT_DATA, S, close_all_at_end=False).run()._trades.empty)
+
     def test_check_adjusted_price_when_placing_order(self):
         class S(Strategy):
             def init(self): pass
